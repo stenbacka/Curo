@@ -44,7 +44,7 @@ class Transaction(models.Model):
     amount           = models.IntegerField()
     transactions     = models.ManyToManyField('self',null=True,blank=True)
     files            = models.ManyToManyField(File,null=True,blank=True)
-    note             = models.TextField(null=True,blank=True)
+    note             = models.TextField(blank=True)
 
     created          = models.DateTimeField(auto_now_add=True)
     updated          = models.DateTimeField(auto_now=True)
