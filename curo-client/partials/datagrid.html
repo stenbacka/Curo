@@ -1,0 +1,28 @@
+<table class="table table-bordered">
+    <tr>
+        <th data-ng-repeat="column in columns">{{column.displayName}}</th>
+<!--        <th>Name</th>
+        <th>Age</th>
+        <th>Gender</th>-->
+        <th>
+            <button ng-click="printRows()">Click me!</button>
+            <button class="btn btn-info" ng-click="toggleEdit()">Toggle edit mode</button>
+        </th>
+    </tr>
+    <tr data-ng-repeat="row in rows" ng-show="!$last || editMode" ng-class="{'info': editMode}">
+        <td data-ng-repeat="column in columns" 
+            data-ng-model="$parent.row[$parent.column.name]"
+            data-teest="$parent.row.category"
+            cell-contenteditable
+            data-cell-editMode="editMode"
+            data-cell-formatter="column.formatter(scope,elm,attrs)"
+            data-cell-value-change="valueChanged(args)">{{row.name}}</td>
+        <!--
+        <td cell-contenteditable ng-model="row.id"></td>
+        <td cell-contenteditable ng-model="row.order_date"></td>
+        <td cell-contenteditable ng-model="row.category"></td>-->
+        <td>
+            <button class="btn btn-danger" ng-hide="$last || !editMode" ng-click="deleteRow($index)">Delete</button>
+        </td>
+    </tr>
+</table>

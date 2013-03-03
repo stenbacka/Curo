@@ -1,7 +1,14 @@
 <div class="tabbable tabs-left" data-ng-controller="MonthsController" data-ng-model="tabModel">
-    <div class="tab-pane" data-ng-repeat="month in months" title="{{month | dateIntervalName}}" value="{{month | dateIntervalName}}">
+    <div class="tab-pane" data-ng-repeat="month in months" 
+         title="{{month | dateIntervalName}}" value="{{month | dateIntervalName}}">
+         <input type="text" name="catTest" ng-change="searchCat(event, args)" ng-model="$parent.sc" />
         <div class="row-fluid">
-            <div class="span11" data-monthly-transaction-table month="month"></div>
+            <div class="span11 datagrid" 
+                 data-ng-controller="MonthController"
+                 data-datagrid-rows="rows"
+                 data-datagrid-columns="columns"
+                 data-datagrid-rows-events="rowsEvents(args)">
+            </div> <!--data-monthly-transaction-table month="month"-->
         </div>
     </div>
 </div>
